@@ -1,1 +1,442 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ipsita Panda - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            text-align: center;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 60px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            color: #764ba2;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: #f0f4ff;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .contact-info a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #764ba2;
+            font-size: 1.8em;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .skill-category li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            color: white;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateX(10px);
+        }
+
+        .project-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        .project-tech {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 5px 5px 5px 0;
+            font-size: 0.9em;
+        }
+
+        .education-item, .experience-item {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .education-item:hover, .experience-item:hover {
+            transform: scale(1.02);
+        }
+
+        .education-item h3, .experience-item h3 {
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .education-item .degree, .experience-item .role {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cert-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .cert-badge:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            font-size: 1.1em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-img">IP</div>
+            <h1>Ipsita Panda</h1>
+            <p class="tagline">Fresher Programmer | B.Tech CSE | Java & Python Developer</p>
+            <div class="contact-info">
+                <a href="tel:+919832627196">📱 +91 9832627196</a>
+                <a href="mailto:ipsitap74@gmail.com">✉️ ipsitap74@gmail.com</a>
+                <a href="https://linkedin.com/in/ipsita-panda23b1102b7" target="_blank">💼 LinkedIn</a>
+                <a href="https://github.com/ipsitatech" target="_blank">💻 GitHub</a>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>👋 About Me</h2>
+            <p class="about-text">
+                I am a dedicated B.Tech Computer Science Engineering graduate from Gandhi Institute for Technological Advancement (CGPA: 8.06). 
+                Passionate about technology and software development, I possess strong foundational skills in Java, C, Python, SQL, and core Data Structures & Algorithms. 
+                I am eager to begin my professional journey in a forward-thinking organization where I can apply my programming skills and collaborative mindset to support innovative projects and drive organizational success.
+            </p>
+            <center>
+                <a href="mailto:ipsitap74@gmail.com" class="cta-button">Let's Connect!</a>
+            </center>
+        </section>
+
+        <section class="section">
+            <h2>💼 Featured Project</h2>
+            <div class="project-card">
+                <h3>🎬 CineArtistry – Movie Recommendation System</h3>
+                <p style="margin: 15px 0;">A modern movie and TV show recommendation platform using Content-Based Filtering (CBF) to deliver personalized entertainment suggestions with a stunning dark mode UI.</p>
+                <p><strong>Key Features:</strong></p>
+                <ul style="margin: 10px 0 15px 20px;">
+                    <li>Personalized recommendations using CBF algorithm</li>
+                    <li>Secure user authentication with password hashing</li>
+                    <li>Dynamic genre filtering and advanced search</li>
+                    <li>Watchlist management with state persistence</li>
+                    <li>Responsive design with YouTube trailer integration</li>
+                </ul>
+                <div>
+                    <span class="project-tech">Python (Flask)</span>
+                    <span class="project-tech">JavaScript</span>
+                    <span class="project-tech">HTML/CSS</span>
+                    <span class="project-tech">SQLite</span>
+                    <span class="project-tech">shadcn/ui</span>
+                    <span class="project-tech">TF-IDF</span>
+                </div>
+                <p style="margin-top: 15px;"><strong>🔗 GitHub:</strong> <a href="https://github.com/ipsitatech" style="color: white; text-decoration: underline;">github.com/ipsitatech</a></p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🛠️ Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>Java (Advanced)</li>
+                        <li>C & C++</li>
+                        <li>Python</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <h3>Web Development</h3>
+                    <ul>
+                        <li>HTML & CSS</li>
+                        <li>JavaScript</li>
+                        <li>PHP</li>
+                        <li>React (Basic)</li>
+                    </ul>
+                </div>
+                <div class="skill-category" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                    <h3>Frameworks & Tools</h3>
+                    <ul>
+                        <li>Flask</li>
+                        <li>CodeIgniter</li>
+                        <li>Laravel</li>
+                        <li>TensorFlow/Keras</li>
+                    </ul>
+                </div>
+                <div class="skill-category" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <h3>Core Concepts</h3>
+                    <ul>
+                        <li>Data Structures & Algorithms</li>
+                        <li>Database Management (SQL)</li>
+                        <li>Neural Networks & CNNs</li>
+                        <li>MS Office Suite</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎓 Education</h2>
+            <div class="education-item">
+                <h3>Gandhi Institute for Technological Advancement (GITA)</h3>
+                <p class="degree">Bachelor of Technology in Computer Science & Engineering</p>
+                <p>📅 2022 - 2026 | 🏆 CGPA: 8.06/10</p>
+            </div>
+            <div class="education-item">
+                <h3>Garh Haripur G.N High School</h3>
+                <p class="degree">Higher Secondary Education (12th)</p>
+                <p>📅 2020 - 2022 | 🏆 81%</p>
+            </div>
+            <div class="education-item">
+                <h3>Puyan Padma Lochan Vidyapith</h3>
+                <p class="degree">Secondary Education (10th)</p>
+                <p>📅 2020 | 🏆 83%</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>💼 Experience</h2>
+            <div class="experience-item">
+                <h3>InternPe</h3>
+                <p class="role">Java Programming Intern (Remote)</p>
+                <p>📅 March 2024 - April 2024</p>
+                <ul style="margin-top: 10px; margin-left: 20px; color: #555;">
+                    <li>Completed a 4-week internship focused on core Java programming concepts</li>
+                    <li>Worked on hands-on application development projects</li>
+                    <li>Gained experience in coding assignments, data structures, and Java syntax</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏆 Certifications</h2>
+            <div>
+                <div class="cert-badge">
+                    <strong>🔐 Deloitte Cyber Job Simulation</strong><br>
+                    Certificate of Completion | June 29, 2025
+                </div>
+                <div class="cert-badge" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <strong>☕ Java In-Depth</strong><br>
+                    Complete Java Engineer (73h 10m)
+                </div>
+                <div class="cert-badge" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <strong>💼 Infosys Springboard</strong><br>
+                    Support Certificate
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🌟 Key Qualities</h2>
+            <div class="skills-grid">
+                <div class="skill-category" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333;">
+                    <h3>💬 Communication</h3>
+                    <p>Fluent in English, Hindi, and Bengali. Strong verbal and written communication skills.</p>
+                </div>
+                <div class="skill-category" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); color: #333;">
+                    <h3>⚡ Quick Learner</h3>
+                    <p>Rapidly adapts to new technologies and frameworks with hands-on approach.</p>
+                </div>
+                <div class="skill-category" style="background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%); color: #333;">
+                    <h3>🎯 Critical Thinking</h3>
+                    <p>Strong problem-solving abilities with logical and analytical mindset.</p>
+                </div>
+                <div class="skill-category" style="background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); color: #333;">
+                    <h3>📊 Management Skills</h3>
+                    <p>Effective project management and collaborative team player.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>✨ Designed & Developed with passion by Ipsita Panda ✨</p>
+            <p style="margin-top: 10px;">📍 Janabarh, Belda, Paschim Medinipur, West Bengal - 721443</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">© 2026 Ipsita Panda. Open to exciting opportunities!</p>
+        </footer>
+    </div>
+</body>
+</html>
